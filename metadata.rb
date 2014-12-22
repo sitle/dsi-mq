@@ -7,3 +7,4 @@ long_description 'Installs/Configures dsi-mq'
 version '0.1.0'
 
 depends 'rabbitmq'
+depends 'keepalived'
