@@ -16,6 +16,9 @@ Ce cookbook simplifie la mise en oeuvre d'une message queue en cluster.
 * ```default['dsi-mq']['cluster']```
 * ```default['dsi-mq']['nodes']```
 * ```default['dsi-mq']['cookie']```
+* ```default['dsi-mq']['vip']```
+* ```default['dsi-mq']['bind']```
+* ```default['dsi-mq']['keypass']```
 
 ## Usage
 

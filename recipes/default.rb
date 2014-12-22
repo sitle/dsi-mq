@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+# Configuration de la message queue (RABBITMQ)
+#
 node.set['rabbitmq']['cluster'] = node['dsi-mq']['cluster']
 node.set['rabbitmq']['cluster_disk_nodes'] = node['dsi-mq']['nodes']
 node.set['rabbitmq']['erlang_cookie'] = node['dsi-mq']['cookie']
@@ -61,3 +63,23 @@ rabbitmq_policy 'ha-all' do
   priority 1
   action :set
 end
+
+# Configuration de la VIP (KEEPALIVED)
+#
+node.set['keepalived']['check_scripts']['chk_init'] = {
+  script: 'killall -0 init',
+  interval: 2,
+  weight: 2
+}
+
+node.set['keepalived']['instances']['vi_1'] = {
+  ip_addresses: node['dsi-mq']['vip'],
+  interface: node['dsi-mq']['bind'],
+  track_script: 'chk_init',
+  nopreempt: false,
+  advert_int: 1,
+  auth_type: nil, # :pass or :ah
+  auth_pass: node['dsi-mq']['keypass']
+}
+
+include_recipe 'keepalived'
