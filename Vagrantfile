@@ -13,6 +13,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     queue.berkshelf.enabled = true
     queue.vm.provision :chef_solo do |chef|
       chef.json = {
+        'dsi-mq' => {
+          nodes: ['rabbit@mq1', 'rabbit@mq2'],
+          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh'
+        }
       }
       chef.run_list = [
         'recipe[dsi-mq::default]'
@@ -27,6 +31,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     queue.berkshelf.enabled = true
     queue.vm.provision :chef_solo do |chef|
       chef.json = {
+        'dsi-mq' => {
+          nodes: ['rabbit@mq1', 'rabbit@mq2'],
+          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh'
+        }
       }
       chef.run_list = [
         'recipe[dsi-mq::default]'
