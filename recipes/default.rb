@@ -22,6 +22,8 @@
 node.set['rabbitmq']['cluster'] = node['dsi-mq']['cluster']
 node.set['rabbitmq']['cluster_disk_nodes'] = node['dsi-mq']['nodes']
 node.set['rabbitmq']['erlang_cookie'] = node['dsi-mq']['cookie']
+node.set['rabbitmq']['default_user'] = node['dsi-mq']['admin']
+node.set['rabbitmq']['default_pass'] = node['dsi-mq']['admin_password']
 
 include_recipe 'rabbitmq::default'
 include_recipe 'rabbitmq::mgmt_console'
@@ -105,6 +107,6 @@ template '/etc/default/haproxy' do
 end
 
 service 'haproxy' do
-  supports :restart => true, :status => true, :reload => true
+  supports restart: true, status: true, reload: true
   action [:enable, :start]
 end
