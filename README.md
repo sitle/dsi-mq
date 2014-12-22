@@ -1,33 +1,27 @@
-# dsi-mq-cookbook
+# dsi-mq
 
-TODO: Enter the cookbook description here.
+Ce cookbook simplifie la mise en oeuvre d'une message queue en cluster.
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+* Ubuntu
+* Debian
 
 ## Attributes
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['dsi-mq']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+* ```default['dsi-mq']['admin']```
+* ```default['dsi-mq']['admin_password']```
+* ```default['dsi-mq']['user']```
+* ```default['dsi-mq']['user_password']```
+* ```default['dsi-mq']['cluster']```
+* ```default['dsi-mq']['nodes']```
+* ```default['dsi-mq']['cookie']```
 
 ## Usage
 
 ### dsi-mq::default
 
-Include `dsi-mq` in your node's `run_list`:
+Inclure `dsi-mq` dans la `run_list`:
 
 ```json
 {
