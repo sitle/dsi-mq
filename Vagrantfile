@@ -14,8 +14,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     queue.vm.provision :chef_solo do |chef|
       chef.json = {
         'dsi-mq' => {
+          vip: '172.28.128.5',
+          bind: 'eth1',
           nodes: ['rabbit@mq1', 'rabbit@mq2'],
-          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh'
+          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh234x',
+          members: ['172.28.128.3', '172.28.128.4']
         }
       }
       chef.run_list = [
@@ -32,8 +35,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     queue.vm.provision :chef_solo do |chef|
       chef.json = {
         'dsi-mq' => {
+          vip: '172.28.128.5',
+          bind: 'eth1',
           nodes: ['rabbit@mq1', 'rabbit@mq2'],
-          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh'
+          cookie: 'qmsldfuqslieqisur2IU902UKJMHkjusdfsqdjhfmsu982ljh234x',
+          members: ['172.28.128.3', '172.28.128.4']
         }
       }
       chef.run_list = [

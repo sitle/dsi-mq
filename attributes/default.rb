@@ -15,3 +15,5 @@ default['dsi-mq']['cookie'] = 'random_string_password'
 default['dsi-mq']['vip'] = '172.28.128.5'
 default['dsi-mq']['bind'] = 'eth1'
 default['dsi-mq']['keypass'] = 'secret'
+
+default['dsi-mq']['members'] = []
