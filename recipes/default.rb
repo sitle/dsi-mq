@@ -83,3 +83,28 @@ node.set['keepalived']['instances']['vi_1'] = {
 }
 
 include_recipe 'keepalived'
+
+# Configuration de la repartition de charge (HAPROXY)
+#
+include_recipe 'haproxy::install_package'
+
+template '/etc/haproxy/haproxy.cfg' do
+  source 'haproxy.cfg.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :reload, 'service[haproxy]'
+end
+
+template '/etc/default/haproxy' do
+  source 'haproxy.default.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :reload, 'service[haproxy]'
+end
+
+service 'haproxy' do
+  supports :restart => true, :status => true, :reload => true
+  action [:enable, :start]
+end

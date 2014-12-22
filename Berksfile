@@ -4,3 +4,4 @@ metadata
 
 cookbook 'rabbitmq'
 cookbook 'keepalived'
+cookbook 'haproxy'
